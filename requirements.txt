@@ -1,0 +1,5 @@
+json5>=0.9.14
+keyboard>=0.13.5
+pandas>=1.4.3
+PyGetWindow>=0.0.9
+pywin32>=306
