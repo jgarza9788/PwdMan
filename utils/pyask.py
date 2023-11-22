@@ -32,7 +32,8 @@ def ask(label, datatype):
     while done == False:
         try:
             if datatype != list:
-                i = datatype(input('what is the '+ label + '?:'))
+                # i = datatype(input('what is the '+ label + '?:'))
+                i = datatype(input(label))
                 return i
             else:
                 i = input('list the ' + label + '? (comma separated):')
@@ -41,6 +42,9 @@ def ask(label, datatype):
                     return []
                 else:
                     return i
+        except KeyboardInterrupt:
+            print('cancelled by user')
+            return None
         except:
             print('it should be a ' + datatype.__name__ + ', try again')
 
@@ -56,6 +60,9 @@ def ask_question(text, datatype):
         try:
             i = datatype(input(text))
             return i
+        except KeyboardInterrupt:
+            print('cancelled by user')
+            return None
         except:
             print('it should be a ' + datatype.__name__ + ', try again')
 
@@ -218,13 +225,19 @@ def choose_one(choices,text='choose one:',verbose=False):
     done = False
     while done == False:
         response = ask_question('',int)
-
+        
+        
+        if response == None:
+            # print('cancelled by user')
+            return None
+        
         if response >= 0 and response < len(choices):
             done = True
             return choices[response]
         else:
             print('input a value from the choices')
             done = False
+
     
 
 if __name__ == '__main__':

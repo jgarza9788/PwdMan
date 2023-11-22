@@ -1,5 +1,6 @@
-json5>=0.9.14
+fuzzywuzzy>=0.18.0
 keyboard>=0.13.5
 pandas>=1.4.3
 PyGetWindow>=0.0.9
 pywin32>=306
+rich>=13.7.0
