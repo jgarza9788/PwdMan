@@ -68,6 +68,7 @@ class PwdMan():
                 "g":{"name":"Get","fn":self.get},
                 "a":{"name":"Add","fn":self.add},
                 "e":{"name":"Edit","fn":self.edit},
+                "p":{"name":"Print","fn":self.print},
                 "t":{"name":f"Toggle show_disabled= {self.show_disabled}","fn":self.toggle_show_disabled},
                 "d":{"name":"Delete","fn":self.delete},
                 "s":{"name":"Save","fn":self.save},
@@ -206,7 +207,6 @@ class PwdMan():
 
         print(table)
 
-
     def toggle_show_disabled(self):
         if self.show_disabled  == True:
             self.show_disabled = False
@@ -259,6 +259,20 @@ class PwdMan():
         self.data.at[index,col] = value 
         print(f"updated: \n{self.data.loc[index,:]}")
         self.save()
+
+    def print(self):
+        self.show_filtered_data()
+
+        if len(self.filtered_data) == 1:
+            index = self.filtered_data.index[0]
+        else:
+            index = ask.ask("Index to get: ",int)
+
+        if index == None:
+            return 0
+        
+        print(self.data.loc[index,:])
+
 
     def add(self):
         new = {}
