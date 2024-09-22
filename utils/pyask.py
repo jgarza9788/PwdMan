@@ -242,3 +242,11 @@ def choose_one(choices,text='choose one:',verbose=False):
 
 if __name__ == '__main__':
     pass
+
+    data = {"name": "{str}","age": "{int}"}
+    data = process_dict(data, verbose=True)
+    print(data)
+
+    data = [{"name": "{str}","age": "{int}"},"{str}","{int}"]
+    data = process_list(data, verbose=True)
+    print(data)
